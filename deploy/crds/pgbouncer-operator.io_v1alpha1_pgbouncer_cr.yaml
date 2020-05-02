@@ -1,0 +1,6 @@
+apiVersion: pgbouncer-operator.io/v1alpha1
+kind: PgBouncer
+metadata:
+  name: example-pgbouncer
+spec:
+  size: 3
