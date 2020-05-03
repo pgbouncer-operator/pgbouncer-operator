@@ -24,7 +24,7 @@ type PgBouncerStatus struct {
 
 // PgBouncer is the Schema for the pgbouncers API
 // +kubebuilder:subresource:status
-// +kubebuilder:resource:path=pgbouncers,scope=Namespaced
+// +kubebuilder:resource:path=pgbouncers,scope=Cluster
 type PgBouncer struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
