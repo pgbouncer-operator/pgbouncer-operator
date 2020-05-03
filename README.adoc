@@ -4,6 +4,12 @@ This is a https://www.pgboncer.org[PgBouncer] Operator to install on OpenShift 4
 
 == Installation
 
+Create a _pgbouncer-operator_ Namespace:
+
+----
+kubectl create namespace pgbouncer-operator
+----
+
 Register the CRD with the Kubernetes apiserver:
 
 ----
@@ -22,7 +28,7 @@ kubectl create -f deploy/operator.yaml
 == Deploy a PgBouncer CR
 
 ----
-$ cat deploy/crds/cache.example.com_v1alpha1_memcached_cr.yaml
+$ cat deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 apiVersion: pgbouncer-operator.io/v1alpha1
 kind: PgBouncer
 metadata:
@@ -31,4 +37,14 @@ spec:
   size: 3
 
 $ kubectl apply -f deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
+----
+
+== Uninstall
+
+----
+kubectl delete -f deploy/crds/pgbouncer-operator.io_pgbouncers_crd.yaml
+kubectl delete -f deploy/operator.yaml
+kubectl delete -f deploy/role_binding.yaml
+kubectl delete -f deploy/role.yaml
+kubectl delete -f deploy/service_account.yaml
 ----
