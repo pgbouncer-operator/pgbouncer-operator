@@ -27,16 +27,22 @@ kubectl create -f deploy/operator.yaml
 
 == Deploy a PgBouncer CR
 
+There is an example PgBouncer Custom Resource (CR) included:
+
 ----
-$ cat deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
+cat deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 apiVersion: pgbouncer-operator.io/v1alpha1
 kind: PgBouncer
 metadata:
   name: example-pgbouncer
 spec:
   size: 3
+----
 
-$ kubectl apply -f deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
+Create the PgBouncer Custom Resource:
+
+----
+kubectl apply -f deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 ----
 
 == Uninstall
@@ -48,3 +54,9 @@ kubectl delete -f deploy/role_binding.yaml
 kubectl delete -f deploy/role.yaml
 kubectl delete -f deploy/service_account.yaml
 ----
+
+== Licensing
+
+PgBouncer Operator is licensed under the Apache License, Version 2.0. See LICENSE for the full license text.
+
+Contributions are welcome under the terms of this license.
