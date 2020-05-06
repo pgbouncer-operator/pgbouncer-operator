@@ -5,21 +5,21 @@ This is a https://www.pgboncer.org[PgBouncer] Operator, created using the https:
 == Installation
 To install this operator on Kubernetes/OpenShift you need to follow these steps:
 
-1. Create a _pgbouncer-operator_ Namespace:
+* Create a _pgbouncer-operator_ Namespace:
 
 [source,shell]
 ----
 kubectl create namespace pgbouncer-operator
 ----
 
-2. Register the Custom Resource Definition (CRD) with the Kubernetes API Server:
+* Register the Custom Resource Definition (CRD) with the Kubernetes API Server:
 
 [source,shell]
 ----
 kubectl create -f deploy/crds/pgbouncer-operator.io_pgbouncers_crd.yaml
 ----
 
-3. Setup RBAC and deploy the _pgbouncer-operator_:
+* Setup RBAC and deploy the _pgbouncer-operator_:
 
 [source,shell]
 ----
@@ -33,9 +33,8 @@ kubectl create -f deploy/operator.yaml
 
 You need to create a Custom Resource (CR) to create a _PgBouncer_ object.
 
-There is an example CR included:
+There is an link:deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml[example CR included]
 
-.deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 ----
 apiVersion: pgbouncer-operator.io/v1alpha1
 kind: PgBouncer
