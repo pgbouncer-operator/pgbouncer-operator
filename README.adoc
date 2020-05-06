@@ -33,7 +33,7 @@ kubectl create -f deploy/operator.yaml
 
 You need to create a Custom Resource (CR) to create a _PgBouncer_ object.
 
-There is an link:deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml[example CR included]
+There is an link:deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml[example CR included]:
 
 ----
 apiVersion: pgbouncer-operator.io/v1alpha1
