@@ -1,23 +1,27 @@
 = PgBouncer Operator
 
-This is a https://www.pgboncer.org[PgBouncer] Operator to install on OpenShift 4.
+This is a https://www.pgboncer.org[PgBouncer] Operator, created using the https://sdk.operatorframework.io[Operator SDK].
 
 == Installation
+To install this operator on Kubernetes/OpenShift you need to follow these steps:
 
-Create a _pgbouncer-operator_ Namespace:
+1. Create a _pgbouncer-operator_ Namespace:
 
+[source,shell]
 ----
 kubectl create namespace pgbouncer-operator
 ----
 
-Register the CRD with the Kubernetes apiserver:
+2. Register the Custom Resource Definition (CRD) with the Kubernetes API Server:
 
+[source,shell]
 ----
 kubectl create -f deploy/crds/pgbouncer-operator.io_pgbouncers_crd.yaml
 ----
 
-Setup RBAC and deploy the pgbouncer-operator:
+3. Setup RBAC and deploy the _pgbouncer-operator_:
 
+[source,shell]
 ----
 kubectl create -f deploy/service_account.yaml
 kubectl create -f deploy/role.yaml
@@ -25,12 +29,14 @@ kubectl create -f deploy/role_binding.yaml
 kubectl create -f deploy/operator.yaml
 ----
 
-== Deploy a PgBouncer CR
+== Usage
 
-There is an example PgBouncer Custom Resource (CR) included:
+You need to create a Custom Resource (CR) to create a _PgBouncer_ object.
 
+There is an example CR included:
+
+.deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 ----
-cat deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 apiVersion: pgbouncer-operator.io/v1alpha1
 kind: PgBouncer
 metadata:
@@ -39,14 +45,18 @@ spec:
   size: 3
 ----
 
-Create the PgBouncer Custom Resource:
+To create the _PgBouncer_ Custom Resource:
 
+[source,shell]
 ----
 kubectl apply -f deploy/crds/pgbouncer-operator.io_v1alpha1_pgbouncer_cr.yaml
 ----
 
 == Uninstall
 
+To uninstall you have to execute:
+
+[source,shell]
 ----
 kubectl delete -f deploy/crds/pgbouncer-operator.io_pgbouncers_crd.yaml
 kubectl delete -f deploy/operator.yaml
@@ -56,7 +66,6 @@ kubectl delete -f deploy/service_account.yaml
 ----
 
 == Licensing
-
-PgBouncer Operator is licensed under the Apache License, Version 2.0. See LICENSE for the full license text.
+PgBouncer Operator is licensed under the Apache License, Version 2.0. See link:LICENSE[LICENSE] for the full license text.
 
 Contributions are welcome under the terms of this license.
